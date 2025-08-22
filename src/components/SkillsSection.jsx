@@ -88,12 +88,12 @@ const designTools = [
 // --- MOUNTAINS ---------------------------------------
 const mountains = [
   { name: "Gunung Muria", height: "1.602 mdpl", tags: ["Jawa Tengah"], img: "/projects/muria.jpg" },
-  { name: "Gunung Andong", height: "1.726 mdpl", tags: ["Jawa Tengah"], img: "src/images/andong.jpg" },
+  { name: "Gunung Andong", height: "1.726 mdpl", tags: ["Jawa Tengah"], img: "/projects/andong.png" },
   { name: "Gunung Ungaran", height: "2.050 mdpl", tags: ["Jawa Tengah"], img: "/projects/ungaran.jpg" },
   { name: "Gunung Pakuwaja", height: "2.614 mdpl", tags: ["Jawa Tengah"], img: "/projects/pakuwaja.jpg" },
   { name: "Gunung Prau", height: "2.565 mdpl", tags: ["Jawa Tengah"], img: "/projects/prau.jpg" },
   { name: "Gunung Kembang", height: "2.340 mdpl", tags: ["Jawa Tengah"], img: "/projects/kembang.jpg" },
-  { name: "Gunung Bismo", height: "2.365 mdpl", tags: ["Jawa Tengah"], img: "src/images/bismo.jpg" },
+  { name: "Gunung Bismo", height: "2.365 mdpl", tags: ["Jawa Tengah"], img: "/projects/bismo.png" },
   { name: "Gunung Sindoro", height: "3.153 mdpl", tags: ["Jawa Tengah"], img: "/projects/sindoro.jpg" },
   { name: "Gunung Lawu", height: "3.265 mdpl", tags: ["Jawa Tengah"], img: "/projects/lawu.jpg" },
   { name: "Gunung Sumbing", height: "3.371 mdpl", tags: ["Jawa Tengah"], img: "/projects/sumbing.jpg" },

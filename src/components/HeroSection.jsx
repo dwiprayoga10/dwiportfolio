@@ -12,7 +12,7 @@ export const HeroSection = () => {
           {/* Foto Profil */}
           <div className="flex justify-center">
             <img
-              src="src/images/saya.jpg"
+              src="/projects/saya.jpg"
               alt="Hazard Prayoga"
               className="w-40 h-40 rounded-full object-cover border-4 border-primary shadow-lg opacity-0 animate-fade-in"
             />
