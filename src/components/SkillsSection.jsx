@@ -9,7 +9,6 @@ import {
   FileCode,
   Atom,
   Wind,
-  Palette,
   Paintbrush,
   PenTool,
   Image as ImageIcon,
@@ -121,7 +120,7 @@ function Card({ children }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 40 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-2xl p-6 
+      className="group relative overflow-hidden rounded-2xl p-4 sm:p-6 
       border border-zinc-800 dark:border-white/10 
       bg-black dark:bg-zinc-900/60 
       shadow-md hover:shadow-xl hover:-translate-y-1 transition-all text-left"
@@ -135,8 +134,8 @@ function IconBadge({ Icon }) {
   return (
     <div className="relative shrink-0">
       <div className="absolute inset-0 blur-xl opacity-30 bg-gradient-to-tr from-blue-500 via-cyan-400 to-violet-500 rounded-xl" />
-      <div className="relative grid place-items-center h-12 w-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md">
-        <Icon className="h-6 w-6" />
+      <div className="relative grid place-items-center h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md">
+        <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
       </div>
     </div>
   );
@@ -163,7 +162,7 @@ export default function SkillsAndMountainsSection() {
   }, [query]);
 
   return (
-    <section id="skills" className="relative py-24 px-4">
+    <section id="skills" className="relative py-16 sm:py-24 px-4">
       <div className="container mx-auto max-w-6xl">
         {/* Title */}
         <motion.div
@@ -171,22 +170,21 @@ export default function SkillsAndMountainsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center mb-10 sm:mb-14"
         >
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight">
             Skills &{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7F6EDB] to-[#a38cf7]">
               Tools
             </span>
           </h2>
-          <p className="mt-4 text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            Berikut adalah kumpulan keterampilan coding dan tools desain yang saya kuasai, 
-            digunakan untuk membangun aplikasi web modern dengan tampilan yang estetik dan fungsi yang optimal.
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+           Berikut skil terbatas saya
           </p>
         </motion.div>
 
         {/* Search */}
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-8 sm:mb-10">
           <div className="relative w-full md:w-80">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 opacity-70 text-zinc-400" />
             <input
@@ -197,61 +195,81 @@ export default function SkillsAndMountainsSection() {
               bg-black dark:bg-zinc-900 
               border border-zinc-800 dark:border-white/20 
               text-zinc-200 dark:text-zinc-200 
+              text-sm sm:text-base
               outline-none focus:ring-2 focus:ring-blue-500/40"
             />
           </div>
         </div>
 
-        {/* Skills & Tools Grid */}
+        {/* Dev Tools */}
+        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-zinc-100">Dev Tools</h3>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 mb-10"
         >
           <AnimatePresence>
-            {[...filteredSkills.dev, ...filteredSkills.design].map(
-              (item, idx) => (
-                <Card key={`${item.name}-${idx}`}>
-                  <div className="flex items-start gap-4">
-                    <IconBadge Icon={item.icon || Hammer} />
-                    <div>
-                      <h3 className="text-lg font-semibold">{item.name}</h3>
-                      {item.desc && (
-                        <p className="text-sm text-zinc-400 dark:text-zinc-400">
-                          {item.desc}
-                        </p>
-                      )}
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {item.tags.map((tag, i) => (
-                          <Chip key={i}>{tag}</Chip>
-                        ))}
-                      </div>
-                    </div>
+            {filteredSkills.dev.map((item, idx) => (
+              <Card key={`dev-${item.name}-${idx}`}>
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <IconBadge Icon={item.icon || Hammer} />
+                  <div>
+                    <h3 className="text-base sm:text-lg font-semibold">{item.name}</h3>
+                    {item.desc && (
+                      <p className="text-xs sm:text-sm text-zinc-400">{item.desc}</p>
+                    )}
                   </div>
-                </Card>
-              )
-            )}
+                </div>
+              </Card>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Design Tools */}
+        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-zinc-100">Design Tools</h3>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"
+        >
+          <AnimatePresence>
+            {filteredSkills.design.map((item, idx) => (
+              <Card key={`design-${item.name}-${idx}`}>
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <IconBadge Icon={item.icon || Hammer} />
+                  <div>
+                    <h3 className="text-base sm:text-lg font-semibold">{item.name}</h3>
+                    {item.desc && (
+                      <p className="text-xs sm:text-sm text-zinc-400">{item.desc}</p>
+                    )}
+                  </div>
+                </div>
+              </Card>
+            ))}
           </AnimatePresence>
         </motion.div>
 
         {/* Toggle Mountains */}
-<button
-  onClick={() => setShowMountains(!showMountains)}
-  className="group relative px-8 py-3 rounded-full 
-  bg-gradient-to-r from-[#6C63FF] via-indigo-500 to-[#6C63FF] 
-  text-white font-semibold text-lg shadow-lg 
-  hover:shadow-indigo-500/40 hover:scale-105 transition-all 
-  animate-pulse"
->
-  <span className="flex items-center gap-2">
-    <Mountain className="h-5 w-5 group-hover:scale-125 transition-transform" />
-    {showMountains ? "Sembunyikan Daftar Gunung" : "Lihat Daftar Gunung"}
-  </span>
-  <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#6C63FF]/30 to-indigo-400/30 blur-xl opacity-50 group-hover:opacity-75 transition" />
-</button>
-
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => setShowMountains(!showMountains)}
+            className="group relative px-6 sm:px-8 py-2.5 sm:py-3 rounded-full 
+            bg-gradient-to-r from-[#6C63FF] via-indigo-500 to-[#6C63FF] 
+            text-white font-semibold text-sm sm:text-lg shadow-lg 
+            hover:shadow-indigo-500/40 hover:scale-105 transition-all 
+            animate-pulse"
+          >
+            <span className="flex items-center gap-2">
+              <Mountain className="h-5 w-5 group-hover:scale-125 transition-transform" />
+              {showMountains ? "Sembunyikan Daftar Gunung" : "Lihat Daftar Gunung"}
+            </span>
+            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#6C63FF]/30 to-indigo-400/30 blur-xl opacity-50 group-hover:opacity-75 transition" />
+          </button>
+        </div>
 
         {/* Mountains Grid */}
         <AnimatePresence>
@@ -261,41 +279,27 @@ export default function SkillsAndMountainsSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-10"
             >
               {filteredMountains.map((item, idx) => (
-                <motion.div
-                  key={`${item.name}-${idx}`}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 40 }}
-                  transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="overflow-hidden rounded-2xl border border-zinc-800 dark:border-white/10 bg-black dark:bg-zinc-900/60 shadow-md hover:shadow-xl transition-all"
-                >
+                <Card key={`mountain-${idx}`}>
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-40 object-cover"
+                    className="w-full h-24 sm:h-32 object-cover rounded-lg mb-3"
                   />
-                  <div className="p-6">
-                    <div className="flex items-start gap-4">
-                      <IconBadge Icon={Mountain} />
-                      <div>
-                        <h3 className="text-lg font-semibold">{item.name}</h3>
-                        {item.height && (
-                          <p className="text-sm text-zinc-400 dark:text-zinc-400">
-                            Ketinggian: {item.height}
-                          </p>
-                        )}
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          {item.tags.map((tag, i) => (
-                            <Chip key={i}>{tag}</Chip>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                  <h3 className="text-sm sm:text-base font-semibold">{item.name}</h3>
+                  {item.height && (
+                    <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+                      Ketinggian: {item.height}
+                    </p>
+                  )}
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {item.tags.map((tag, i) => (
+                      <Chip key={i}>{tag}</Chip>
+                    ))}
                   </div>
-                </motion.div>
+                </Card>
               ))}
             </motion.div>
           )}

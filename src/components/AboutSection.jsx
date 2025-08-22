@@ -11,26 +11,23 @@ export const AboutSection = () => {
           About <span className="text-primary"> Me</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6" data-aos="fade-up">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          {/* Text Section */}
+          <div className="order-1 md:order-1 space-y-6" data-aos="fade-up">
             <h3 className="text-2xl font-semibold">
-               Informatics Student & Web Enthusiast
+              Informatics Student & Web Enthusiast
             </h3>
 
             <p className="text-muted-foreground">
-              Saya adalah <span className="font-semibold">Hazard Prayoga</span>, 
-              seorang mahasiswa Teknik Informatika di Universitas Dian Nuswantoro. 
-              Fokus saya adalah membangun{" "}
-              <span className="font-semibold">modern & responsive web applications</span> 
-              dengan desain yang clean dan fungsionalitas yang solid.
-            </p>
-
-            <p className="text-muted-foreground">
-              Di luar dunia teknologi, saya juga memiliki passion pada aktivitas outdoor, 
-              terutama <span className="font-semibold">mountain hiking</span>. 
-              Dari sana saya belajar tentang{" "}
-              <span className="italic">perseverance, problem-solving, dan teamwork</span>. 
-              Nilai-nilai tersebut sangat memengaruhi cara saya menghadapi setiap tantangan dalam project teknologi.
+              Di luar dunia teknologi, saya juga memiliki passion pada aktivitas
+              outdoor, terutama{" "}
+              <span className="font-semibold">mountain hiking</span>. Dari sana
+              saya belajar tentang{" "}
+              <span className="italic">
+                perseverance, problem-solving, dan teamwork
+              </span>
+              . Nilai-nilai tersebut sangat memengaruhi cara saya menghadapi
+              setiap tantangan dalam project teknologi.
             </p>
 
             <div
@@ -51,7 +48,8 @@ export const AboutSection = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
+          {/* Cards Section */}
+          <div className="order-2 md:order-2 grid grid-cols-1 gap-6">
             <div className="gradient-border p-6 card-hover" data-aos="fade-up">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
@@ -61,8 +59,8 @@ export const AboutSection = () => {
                   <h4 className="font-semibold text-lg">Web Development</h4>
                   <p className="text-muted-foreground">
                     Membangun aplikasi web yang{" "}
-                    <span className="italic">modern, responsive,</span> 
-                    dan efisien dengan teknologi terbaik saat ini.
+                    <span className="italic">modern, responsive,</span> dan
+                    efisien dengan teknologi terbaik saat ini.
                   </p>
                 </div>
               </div>
@@ -80,8 +78,9 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">UI/UX Design</h4>
                   <p className="text-muted-foreground">
-                    Merancang interface yang intuitif dan pengalaman pengguna yang seamless, 
-                    sehingga teknologi terasa lebih human-friendly.
+                    Merancang interface yang intuitif dan pengalaman pengguna
+                    yang seamless, sehingga teknologi terasa lebih
+                    human-friendly.
                   </p>
                 </div>
               </div>
@@ -97,12 +96,15 @@ export const AboutSection = () => {
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Adventure & Exploration</h4>
+                  <h4 className="font-semibold text-lg">
+                    Adventure & Exploration
+                  </h4>
                   <p className="text-muted-foreground">
-                    Terinspirasi dari hobi hiking dan dunia outdoor, 
-                    saya selalu membawa semangat{" "}
-                    <span className="italic">creativity, resilience,</span> 
-                    dan <span className="italic">teamwork</span> dalam setiap project.
+                    Terinspirasi dari hobi hiking dan dunia outdoor, saya selalu
+                    membawa semangat{" "}
+                    <span className="italic">creativity, resilience,</span> dan{" "}
+                    <span className="italic">teamwork</span> dalam setiap
+                    project.
                   </p>
                 </div>
               </div>

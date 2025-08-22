@@ -40,7 +40,7 @@ export const HeroSection = () => {
 <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3">
   Saya adalah mahasiswa Teknik Informatika di Universitas Dian Nuswantoro. 
   Memiliki minat pada teknologi dan kreativitas, saya senang membangun pengalaman web modern. 
-  Di luar dunia pemrograman, saya suka menjelajahi pegunungan karena hiking adalah salah satu hobi favorit saya.
+  
 </p>
 
 

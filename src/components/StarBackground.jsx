@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 /* ======= BACKGROUND MALAM (Bintang, Meteor, Bulan) ======= */
 function StarBackground() {
- const [stars, setStars] = useState([]);
-const [meteors, setMeteors] = useState([]);
+  const [stars, setStars] = useState([]);
+  const [meteors, setMeteors] = useState([]);
 
   useEffect(() => {
     generateStars();
@@ -270,9 +270,18 @@ export default function Background() {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
+
     if (storedTheme === "dark") {
       setIsDarkMode(true);
+    } else if (storedTheme === "light") {
+      setIsDarkMode(false);
+    } else {
+      // default ke dark
+      localStorage.setItem("theme", "dark");
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
     }
+
     const observer = new MutationObserver(() => {
       setIsDarkMode(document.documentElement.classList.contains("dark"));
     });
@@ -289,12 +298,18 @@ export const ThemeToggle = () => {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
+
     if (storedTheme === "dark") {
       setIsDarkMode(true);
       document.documentElement.classList.add("dark");
-    } else {
-      localStorage.setItem("theme", "light");
+    } else if (storedTheme === "light") {
       setIsDarkMode(false);
+      document.documentElement.classList.remove("dark");
+    } else {
+      // default ke dark
+      localStorage.setItem("theme", "dark");
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
