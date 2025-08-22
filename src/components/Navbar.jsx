@@ -13,7 +13,7 @@ const navItems = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true); // default dark mode
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   /* ====== Scroll Effect ====== */
   useEffect(() => {
@@ -45,9 +45,7 @@ const Navbar = () => {
     <nav
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
-        isScrolled
-          ? "py-3 bg-background/80 backdrop-blur-md shadow-sm"
-          : "py-5 bg-transparent"
+        isScrolled ? "py-3" : "py-5"
       )}
     >
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">

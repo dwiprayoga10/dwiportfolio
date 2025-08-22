@@ -19,69 +19,19 @@ import {
 
 // --- DATA ---------------------------------------------
 const devSkills = [
-  {
-    name: "HTML/CSS",
-    icon: Code2,
-    tags: ["Frontend", "Struktur", "Styling"],
-    desc: "Dasar pembuatan struktur & style web.",
-  },
-  {
-    name: "JavaScript",
-    icon: FileCode,
-    tags: ["Frontend", "Interaktif", "Dynamic"],
-    desc: "Bahasa pemrograman interaktif untuk web.",
-  },
-  {
-    name: "React",
-    icon: Atom,
-    tags: ["Frontend", "Komponen", "SPA"],
-    desc: "Library frontend modern berbasis komponen.",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: Wind,
-    tags: ["Frontend", "Utility-First", "Responsive"],
-    desc: "Framework utility-first untuk styling cepat.",
-  },
-  {
-    name: "PHP",
-    icon: Braces,
-    tags: ["Backend", "Server-Side", "Dynamic"],
-    desc: "Bahasa backend populer untuk aplikasi web.",
-  },
-  {
-    name: "Java",
-    icon: Coffee,
-    tags: ["Backend", "OOP", "Cross-Platform"],
-    desc: "Bahasa pemrograman OOP serbaguna.",
-  },
+  { name: "HTML/CSS", icon: Code2 },
+  { name: "JavaScript", icon: FileCode },
+  { name: "React", icon: Atom },
+  { name: "Tailwind CSS", icon: Wind },
+  { name: "PHP", icon: Braces },
+  { name: "Java", icon: Coffee },
 ];
 
 const designTools = [
-  {
-    name: "VS Code",
-    icon: Hammer,
-    tags: ["Tooling", "Editor", "Extensions"],
-    desc: "Text editor modern untuk coding.",
-  },
-  {
-    name: "Canva",
-    icon: Paintbrush,
-    tags: ["Design", "Cepat", "Visual"],
-    desc: "Alat desain visual yang simpel & cepat.",
-  },
-  {
-    name: "Photoshop",
-    icon: ImageIcon,
-    tags: ["Design", "Photo Editing", "Advanced"],
-    desc: "Software profesional untuk editing foto.",
-  },
-  {
-    name: "CorelDRAW",
-    icon: PenTool,
-    tags: ["Design", "Vektor", "Grafis"],
-    desc: "Software desain vektor grafis.",
-  },
+  { name: "VS Code", icon: Hammer },
+  { name: "Canva", icon: Paintbrush },
+  { name: "Photoshop", icon: ImageIcon },
+  { name: "CorelDRAW", icon: PenTool },
 ];
 
 // --- MOUNTAINS ---------------------------------------
@@ -123,7 +73,7 @@ function Card({ children }) {
       className="group relative overflow-hidden rounded-2xl p-4 sm:p-6 
       border border-zinc-800 dark:border-white/10 
       bg-black dark:bg-zinc-900/60 
-      shadow-md hover:shadow-xl hover:-translate-y-1 transition-all text-left"
+      shadow-md hover:shadow-lg hover:-translate-y-1 transition-all text-left"
     >
       {children}
     </motion.div>
@@ -179,7 +129,7 @@ export default function SkillsAndMountainsSection() {
             </span>
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-           Berikut skil terbatas saya
+            Dengan skill dan alat ini, saya berfokus pada efisiensi, kualitas kode, dan pengalaman pengguna yang maksimal.
           </p>
         </motion.div>
 
@@ -208,19 +158,14 @@ export default function SkillsAndMountainsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 mb-10"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 mb-10"
         >
           <AnimatePresence>
             {filteredSkills.dev.map((item, idx) => (
               <Card key={`dev-${item.name}-${idx}`}>
-                <div className="flex items-start gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <IconBadge Icon={item.icon || Hammer} />
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold">{item.name}</h3>
-                    {item.desc && (
-                      <p className="text-xs sm:text-sm text-zinc-400">{item.desc}</p>
-                    )}
-                  </div>
+                  <h3 className="text-sm sm:text-lg font-semibold leading-snug">{item.name}</h3>
                 </div>
               </Card>
             ))}
@@ -234,19 +179,14 @@ export default function SkillsAndMountainsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6"
         >
           <AnimatePresence>
             {filteredSkills.design.map((item, idx) => (
               <Card key={`design-${item.name}-${idx}`}>
-                <div className="flex items-start gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <IconBadge Icon={item.icon || Hammer} />
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold">{item.name}</h3>
-                    {item.desc && (
-                      <p className="text-xs sm:text-sm text-zinc-400">{item.desc}</p>
-                    )}
-                  </div>
+                  <h3 className="text-sm sm:text-lg font-semibold leading-snug">{item.name}</h3>
                 </div>
               </Card>
             ))}
@@ -279,7 +219,7 @@ export default function SkillsAndMountainsSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-10"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 mt-8 sm:mt-10"
             >
               {filteredMountains.map((item, idx) => (
                 <Card key={`mountain-${idx}`}>

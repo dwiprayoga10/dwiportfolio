@@ -37,11 +37,11 @@ export const HeroSection = () => {
             </span>
           </h1>
 
-<p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-  Saya adalah mahasiswa Teknik Informatika di Universitas Dian Nuswantoro. 
-  Memiliki minat pada teknologi dan kreativitas, saya senang membangun pengalaman web modern. 
-  
+<p className="text-lg md:text-xl text-muted-foreground max-w-1xl mx-auto opacity-0 animate-fade-in-delay-3">
+  I am an Informatics Engineering student at Dian Nuswantoro University. 
+  With a strong interest in technology and creativity, I enjoy building modern web experiences. 
 </p>
+
 
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">

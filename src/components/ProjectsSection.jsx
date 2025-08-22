@@ -6,7 +6,7 @@ const projects = [
   title: "Website Sewa Aset Jasa Raharja",
   description: "Website Pemesanan dan Penyewaan Gedung dan Ruangan Semarang.",
   image: "/projects/project4.png",
-  tags: ["React", "TailwindCSS", "Supabase"],
+  tags: ["Laravel", "TailwindCSS"],
   demoUrl: "https://www.sewaasetjrsemarang.com/",
   githubUrl: "#",
 },
@@ -17,7 +17,7 @@ const projects = [
     description:
       "Interactive analytics dashboard with data visualization and filtering capabilities.",
     image: "/projects/project6.jpg",
-    tags: ["TypeScript", "D3.js", "Next.js"],
+    tags: [""],
     demoUrl: "#",
     githubUrl: "#",
   },
@@ -27,7 +27,7 @@ const projects = [
     description:
       "Website akuntansi milik mitraku cibuyur .",
     image: "/projects/project5.png",
-    tags: ["React", "Node.js", "Stripe"],
+    tags: [""],
     demoUrl: "#",
     githubUrl: "#",
   },
