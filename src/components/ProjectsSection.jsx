@@ -21,16 +21,17 @@ const projects = [
     demoUrl: "#",
     githubUrl: "#",
   },
-  {
-    id: 3,
-    title: "Motracountansi",
-    description:
-      "Website akuntansi milik mitraku cibuyur .",
-    image: "/projects/project5.png",
-    tags: [""],
-    demoUrl: "#",
-    githubUrl: "#",
-  },
+{
+  id: 3,
+  title: "Motracountansi",
+  description:
+    "Website akuntansi milik Mitraku Cibuyur. Aplikasi ini membantu pencatatan transaksi, laporan keuangan, serta mempermudah pengelolaan data akuntansi secara digital.",
+  image: "/projects/project5.png",
+  tags: ["PHP + MySQL","Bootstrap"],
+  demoUrl: "#",
+  githubUrl: "#",
+},
+
 ];
 
 export const ProjectsSection = () => {

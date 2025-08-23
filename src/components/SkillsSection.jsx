@@ -18,14 +18,18 @@ import {
 } from "lucide-react";
 
 // --- DATA ---------------------------------------------
+
 const devSkills = [
-  { name: "HTML/CSS", icon: Code2 },
+  { name: "Laravel", icon: Braces },
   { name: "JavaScript", icon: FileCode },
   { name: "React", icon: Atom },
   { name: "Tailwind CSS", icon: Wind },
   { name: "PHP", icon: Braces },
   { name: "Java", icon: Coffee },
+  { name: "Python", icon: Code2 },
+  { name: "C++", icon: FileCode },
 ];
+
 
 const designTools = [
   { name: "VS Code", icon: Hammer },

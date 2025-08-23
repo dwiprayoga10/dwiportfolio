@@ -19,16 +19,19 @@ export const AboutSection = () => {
               Informatics Student & Web Enthusiast
             </h3>
 
-<p className="text-muted-foreground">
-  Di luar dunia teknologi, saya memiliki minat pada aktivitas luar ruangan,
-  khususnya <span className="font-semibold">mendaki gunung</span>. Dari hal
-  tersebut, saya belajar tentang{" "}
-  <span className="italic">ketekunan, pemecahan masalah, dan kerja sama tim</span>. 
-  Nilai-nilai ini sangat memengaruhi cara saya menghadapi tantangan dalam proyek teknologi.
-</p>
+            <p className="text-muted-foreground">
+              Di luar dunia teknologi, saya memiliki minat pada aktivitas luar
+              ruangan, khususnya{" "}
+              <span className="font-semibold">mendaki gunung</span>. Dari hal
+              tersebut, saya belajar tentang{" "}
+              <span className="italic">
+                ketekunan, pemecahan masalah, dan kerja sama tim
+              </span>
+              . Nilai-nilai ini sangat memengaruhi cara saya menghadapi
+              tantangan dalam proyek teknologi.
+            </p>
 
-
-
+            {/* Buttons */}
             <div
               className="flex flex-col sm:flex-row gap-4 pt-4 justify-center"
               data-aos="fade-up"
@@ -39,8 +42,9 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href="/cv.pdf"
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+                href="projects/cv.pdf"
+                download
+                className="cosmic-button bg-primary/10 text-primary hover:bg-primary/20"
               >
                 Download CV
               </a>
