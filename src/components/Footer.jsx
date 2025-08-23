@@ -10,7 +10,7 @@ export const Footer = () => {
         {/* Social links */}
         <div className="flex gap-6">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/dwiprayoga10"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 shadow hover:shadow-lg"
@@ -18,7 +18,7 @@ export const Footer = () => {
             <Github size={20} />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://linkedin.com/dwi-prayoga111203"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 shadow hover:shadow-lg"
@@ -26,7 +26,7 @@ export const Footer = () => {
             <Linkedin size={20} />
           </a>
           <a
-            href="https://instagram.com/yourusername"
+            href="https://instagram.com/hzrdpryga10"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 shadow hover:shadow-lg"
