@@ -1,17 +1,45 @@
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Github, Linkedin, Instagram } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="relative mt-20 bg-gradient-to-r from-blue-600/10 via-violet-600/10 to-pink-600/10 border-t border-border">
-      <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col items-center gap-6">
-        {/* Teks copyright */}
-        <p className="text-sm text-muted-foreground text-center">
-          &copy; {new Date().getFullYear()}{" "}
-          <span className="font-semibold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
-            Hazardprayoga10.co
-          </span>
-          . All rights reserved.
-        </p>
+    <footer className="relative mt-20 border-t border-border bg-gradient-to-b from-background via-background/50 to-background">
+      {/* Gradient line */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500"></div>
+
+      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center gap-6">
+        {/* Social links */}
+        <div className="flex gap-6">
+          <a
+            href="https://github.com/dwiprayoga10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 shadow hover:shadow-lg"
+          >
+            <Github size={20} />
+          </a>
+          <a
+            href="https://linkedin.com/dwi-prayoga111203"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 shadow hover:shadow-lg"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a
+            href="https://instagram.com/hzrdpryga10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-300 shadow hover:shadow-lg"
+          >
+            <Instagram size={20} />
+          </a>
+        </div>
+
+{/* Teks copyright */}
+<p className="text-sm text-muted-foreground text-center">
+  © {new Date().getFullYear()} Hazardprayoga10.co · All Rights Reserved
+</p>
+
 
         {/* Tombol scroll to top */}
         <a
