@@ -1,254 +1,116 @@
-"use client";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
-import { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Code2,
-  Braces,
-  Coffee,
-  FileCode,
-  Atom,
-  Wind,
-  Paintbrush,
-  PenTool,
-  Image as ImageIcon,
-  Hammer,
-  Mountain,
-  Search,
-} from "lucide-react";
+const projects = [
+ {
+  id: 1,
+  title: "Website Sewa Aset Jasa Raharja",
+  description: "Website Pemesanan dan Penyewaan Gedung dan Ruangan Semarang.",
+  image: "/projects/project4.png",
+  tags: ["Laravel", "TailwindCSS"],
+  demoUrl: "https://www.sewaasetjrsemarang.com/",
+  githubUrl: "#",
+},
 
-// --- DATA ---------------------------------------------
+  {
+    id: 2,
+    title: "SI Panjir (Sistem Pemantau Banjir)",
+    description:
+      "Interactive analytics dashboard with data visualization and filtering capabilities.",
+    image: "/projects/project6.jpg",
+    tags: [""],
+    demoUrl: "#",
+    githubUrl: "#",
+  },
+{
+  id: 3,
+  title: "Motracountansi",
+  description:
+    "Website akuntansi milik Mitraku Cibuyur. Aplikasi ini membantu pencatatan transaksi, laporan keuangan, serta mempermudah pengelolaan data akuntansi secara digital.",
+  image: "/projects/project5.png",
+  tags: ["PHP + MySQL","Bootstrap"],
+  demoUrl: "#",
+  githubUrl: "#",
+},
 
-const devSkills = [
-  { name: "Laravel", icon: Braces },
-  { name: "JavaScript", icon: FileCode },
-  { name: "React", icon: Atom },
-  { name: "Tailwind CSS", icon: Wind },
-  { name: "PHP", icon: Braces },
-  { name: "Java", icon: Coffee },
-  { name: "Python", icon: Code2 },
-  { name: "C++", icon: FileCode },
 ];
 
-
-const designTools = [
-  { name: "VS Code", icon: Hammer },
-  { name: "Canva", icon: Paintbrush },
-  { name: "Photoshop", icon: ImageIcon },
-  { name: "CorelDRAW", icon: PenTool },
-];
-
-// --- MOUNTAINS ---------------------------------------
-const mountains = [
-  { name: "Gunung Muria", height: "1.602 mdpl", tags: ["Jawa Tengah"], img: "/projects/muria.jpg" },
-  { name: "Gunung Andong", height: "1.726 mdpl", tags: ["Jawa Tengah"], img: "/projects/andong.png" },
-  { name: "Gunung Ungaran", height: "2.050 mdpl", tags: ["Jawa Tengah"], img: "/projects/ungaran.jpg" },
-  { name: "Gunung Pakuwaja", height: "2.614 mdpl", tags: ["Jawa Tengah"], img: "/projects/pakuwaja.jpg" },
-  { name: "Gunung Prau", height: "2.565 mdpl", tags: ["Jawa Tengah"], img: "/projects/prau.jpg" },
-  { name: "Gunung Kembang", height: "2.340 mdpl", tags: ["Jawa Tengah"], img: "/projects/kembang.jpg" },
-  { name: "Gunung Bismo", height: "2.365 mdpl", tags: ["Jawa Tengah"], img: "/projects/bismo.png" },
-  { name: "Gunung Sindoro", height: "3.153 mdpl", tags: ["Jawa Tengah"], img: "/projects/sindoro.jpg" },
-  { name: "Gunung Lawu", height: "3.265 mdpl", tags: ["Jawa Tengah"], img: "/projects/lawu.jpg" },
-  { name: "Gunung Sumbing", height: "3.371 mdpl", tags: ["Jawa Tengah"], img: "/projects/sumbing.jpg" },
-  { name: "Gunung Slamet", height: "3.428 mdpl", tags: ["Jawa Tengah"], img: "/projects/slamet.jpg" },
-];
-
-// --- UI PRIMITIVES ------------------------------------
-function Chip({ children }) {
+export const ProjectsSection = () => {
   return (
-    <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium 
-      border border-zinc-200 dark:border-white/10 
-      bg-black dark:bg-white/5 
-      text-zinc-200 dark:text-zinc-300 shadow-sm`}
-    >
-      {children}
-    </span>
-  );
-}
+    <section id="projects" className="py-24 px-4 relative">
+      <div className="container mx-auto max-w-5xl">
+<h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+  {" "}
+  Proyek <span className="text-primary"> Unggulan </span>
+</h2>
 
-function Card({ children }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 40 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-2xl p-4 sm:p-6 
-      border border-zinc-800 dark:border-white/10 
-      bg-black dark:bg-zinc-900/60 
-      shadow-md hover:shadow-lg hover:-translate-y-1 transition-all text-left"
-    >
-      {children}
-    </motion.div>
-  );
-}
+<p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+  Berikut adalah beberapa proyek terbaru saya. 
+  Setiap proyek dikerjakan dengan perhatian pada detail, performa, 
+  serta pengalaman pengguna.
+</p>
 
-function IconBadge({ Icon }) {
-  return (
-    <div className="relative shrink-0">
-      <div className="absolute inset-0 blur-xl opacity-30 bg-gradient-to-tr from-blue-500 via-cyan-400 to-violet-500 rounded-xl" />
-      <div className="relative grid place-items-center h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md">
-        <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
-      </div>
-    </div>
-  );
-}
 
-// --- MAIN COMPONENT -----------------------------------
-export default function SkillsAndMountainsSection() {
-  const [query, setQuery] = useState("");
-  const [showMountains, setShowMountains] = useState(false);
-
-  const filteredSkills = useMemo(() => {
-    const q = query.toLowerCase();
-    const filterByQuery = (list) =>
-      list.filter((item) => item.name.toLowerCase().includes(q));
-    return {
-      dev: filterByQuery(devSkills),
-      design: filterByQuery(designTools),
-    };
-  }, [query]);
-
-  const filteredMountains = useMemo(() => {
-    const q = query.toLowerCase();
-    return mountains.filter((item) => item.name.toLowerCase().includes(q));
-  }, [query]);
-
-  return (
-    <section id="skills" className="relative py-16 sm:py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-14"
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight">
-            Skills &{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7F6EDB] to-[#a38cf7]">
-              Tools
-            </span>
-          </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-            Dengan skill dan alat ini, saya berfokus pada efisiensi, kualitas kode, dan pengalaman pengguna yang maksimal.
-          </p>
-        </motion.div>
-
-        {/* Search */}
-        <div className="flex justify-center mb-8 sm:mb-10">
-          <div className="relative w-full md:w-80">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 opacity-70 text-zinc-400" />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Cari skill atau tool..."
-              className="w-full rounded-full pl-10 pr-4 py-2.5 
-              bg-black dark:bg-zinc-900 
-              border border-zinc-800 dark:border-white/20 
-              text-zinc-200 dark:text-zinc-200 
-              text-sm sm:text-base
-              outline-none focus:ring-2 focus:ring-blue-500/40"
-            />
-          </div>
-        </div>
-
-        {/* Dev Tools */}
-        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-zinc-100">Dev Tools</h3>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 mb-10"
-        >
-          <AnimatePresence>
-            {filteredSkills.dev.map((item, idx) => (
-              <Card key={`dev-${item.name}-${idx}`}>
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <IconBadge Icon={item.icon || Hammer} />
-                  <h3 className="text-sm sm:text-lg font-semibold leading-snug">{item.name}</h3>
-                </div>
-              </Card>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Design Tools */}
-        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-zinc-100">Design Tools</h3>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6"
-        >
-          <AnimatePresence>
-            {filteredSkills.design.map((item, idx) => (
-              <Card key={`design-${item.name}-${idx}`}>
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <IconBadge Icon={item.icon || Hammer} />
-                  <h3 className="text-sm sm:text-lg font-semibold leading-snug">{item.name}</h3>
-                </div>
-              </Card>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Toggle Mountains */}
-        <div className="flex justify-center mt-12">
-          <button
-            onClick={() => setShowMountains(!showMountains)}
-            className="group relative px-6 sm:px-8 py-2.5 sm:py-3 rounded-full 
-            bg-gradient-to-r from-[#6C63FF] via-indigo-500 to-[#6C63FF] 
-            text-white font-semibold text-sm sm:text-lg shadow-lg 
-            hover:shadow-indigo-500/40 hover:scale-105 transition-all 
-            animate-pulse"
-          >
-            <span className="flex items-center gap-2">
-              <Mountain className="h-5 w-5 group-hover:scale-125 transition-transform" />
-              {showMountains ? "Sembunyikan Daftar Gunung" : "Lihat Daftar Gunung"}
-            </span>
-            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#6C63FF]/30 to-indigo-400/30 blur-xl opacity-50 group-hover:opacity-75 transition" />
-          </button>
-        </div>
-
-        {/* Mountains Grid */}
-        <AnimatePresence>
-          {showMountains && (
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 mt-8 sm:mt-10"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, key) => (
+            <div
+              key={key}
+              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
             >
-              {filteredMountains.map((item, idx) => (
-                <Card key={`mountain-${idx}`}>
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-24 sm:h-32 object-cover rounded-lg mb-3"
-                  />
-                  <h3 className="text-sm sm:text-base font-semibold">{item.name}</h3>
-                  {item.height && (
-                    <p className="text-xs sm:text-sm text-zinc-400 mt-1">
-                      Ketinggian: {item.height}
-                    </p>
-                  )}
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {item.tags.map((tag, i) => (
-                      <Chip key={i}>{tag}</Chip>
-                    ))}
+              <div className="h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              <div className="p-6">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="text-xl font-semibold mb-1"> {project.title}</h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  {project.description}
+                </p>
+                <div className="flex justify-between items-center">
+                  <div className="flex space-x-3">
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                    >
+                      <Github size={20} />
+                    </a>
                   </div>
-                </Card>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <a
+            className="cosmic-button w-fit flex items-center mx-auto gap-2"
+            target="_blank"
+            href="https://github.com/dwiprayoga10
+"
+          >
+            Check My Github <ArrowRight size={16} />
+          </a>
+        </div>
       </div>
     </section>
   );
-}
+};
