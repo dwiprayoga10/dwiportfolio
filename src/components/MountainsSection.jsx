@@ -58,12 +58,18 @@ function Card({ children }) {
 // --- MAIN COMPONENT -----------------------------------
 export default function MountainsSection() {
   const [query, setQuery] = useState("");
+  const [showAll, setShowAll] = useState(false);
 
   const filteredMountains = useMemo(() => {
     return mountains.filter((item) =>
       item.name.toLowerCase().includes(query.toLowerCase())
     );
   }, [query]);
+
+  // Jika mobile dan belum showAll → tampilkan 4 gunung saja
+  const displayedMountains = showAll
+    ? filteredMountains
+    : filteredMountains.slice(0, 4);
 
   return (
     <section id="peaks" className="relative py-16 sm:py-24 px-4">
@@ -81,7 +87,6 @@ export default function MountainsSection() {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6C63FF] to-[#a38cf7]">
               Reached
             </span>{" "}
-            
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed">
             Berikut adalah daftar gunung yang sudah saya daki lengkap dengan
@@ -115,7 +120,7 @@ export default function MountainsSection() {
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6"
         >
           <AnimatePresence>
-            {filteredMountains.map((item, idx) => (
+            {displayedMountains.map((item, idx) => (
               <Card key={`mountain-${idx}`}>
                 <img
                   src={item.img}
@@ -137,6 +142,18 @@ export default function MountainsSection() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Tombol Lihat Lainnya */}
+        {filteredMountains.length > 4 && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#6C63FF] to-[#a38cf7] text-white font-medium shadow-md hover:opacity-90 transition"
+            >
+              {showAll ? "Tutup" : "Lihat Lainnya"}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
