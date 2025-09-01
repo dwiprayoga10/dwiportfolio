@@ -124,59 +124,14 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4">Connect With Me</h4>
               <div className="flex space-x-4 justify-center relative z-10">
-                {/* LinkedIn */}
-                <a
-                  href="https://www.linkedin.com/in/dwi-prayoga111203"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition"
-                >
-                  <Linkedin />
-                </a>
+                
 
-                {/* X (Twitter) */}
-                <a
-                  href="https://x.com/HazardPrayoga"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M18.244 2.25h3.308l-7.227 8.26L22.5 21.75h-6.531l-5.118-6.674-5.85 6.674H2.694l7.73-8.812L1.5 2.25h6.687l4.617 6.064 5.44-6.064z" />
-                  </svg>
-                </a>
 
-                {/* Instagram */}
-                <a
-                  href="https://instagram.com/hzrdpryga10"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition"
-                >
-                  <Instagram />
-                </a>
+     
 
-                {/* GitHub */}
-                <a
-                  href="https://github.com/dwiprayoga10"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.262.82-.58v-2.165c-3.338.726-4.042-1.415-4.042-1.415-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.997.108-.776.42-1.305.762-1.605-2.665-.304-5.467-1.335-5.467-5.932 0-1.31.47-2.382 1.237-3.22-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.838 1.236 1.91 1.236 3.22 0 4.61-2.807 5.625-5.48 5.922.43.37.823 1.096.823 2.21v3.28c0 .32.217.697.825.58C20.565 21.796 24 17.297 24 12c0-6.63-5.37-12-12-12z" />
-                  </svg>
-                </a>
+    
+
+   
               </div>
             </div>
           </motion.div>

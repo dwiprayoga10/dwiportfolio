@@ -10,6 +10,8 @@ import { ProjectsSection } from "../components/ProjectsSection";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 import StarBackground from "@/components/StarBackground";
+import MountainsSection from "../components/MountainsSection"; // ✅ tanpa {}
+
 
 
 export const Home = () => {
@@ -27,6 +29,7 @@ export const Home = () => {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
+        <MountainsSection/>
         <ProjectsSection />
         <ContactSection />
       </main>

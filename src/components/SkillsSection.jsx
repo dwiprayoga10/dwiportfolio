@@ -13,23 +13,23 @@ import {
   PenTool,
   Image as ImageIcon,
   Hammer,
-  Mountain,
   Search,
 } from "lucide-react";
 
 // --- DATA ---------------------------------------------
-
-const devSkills = [
+const backendSkills = [
   { name: "Laravel", icon: Braces },
-  { name: "JavaScript", icon: FileCode },
-  { name: "React", icon: Atom },
-  { name: "Tailwind CSS", icon: Wind },
   { name: "PHP", icon: Braces },
   { name: "Java", icon: Coffee },
   { name: "Python", icon: Code2 },
   { name: "C++", icon: FileCode },
 ];
 
+const frontendSkills = [
+  { name: "JavaScript", icon: FileCode },
+  { name: "React", icon: Atom },
+  { name: "Tailwind CSS", icon: Wind },
+];
 
 const designTools = [
   { name: "VS Code", icon: Hammer },
@@ -38,35 +38,7 @@ const designTools = [
   { name: "CorelDRAW", icon: PenTool },
 ];
 
-// --- MOUNTAINS ---------------------------------------
-const mountains = [
-  { name: "Gunung Muria", height: "1.602 mdpl", tags: ["Jawa Tengah"], img: "/projects/muria.jpg" },
-  { name: "Gunung Andong", height: "1.726 mdpl", tags: ["Jawa Tengah"], img: "/projects/andong.png" },
-  { name: "Gunung Ungaran", height: "2.050 mdpl", tags: ["Jawa Tengah"], img: "/projects/ungaran.jpg" },
-  { name: "Gunung Pakuwaja", height: "2.614 mdpl", tags: ["Jawa Tengah"], img: "/projects/pakuwaja.jpg" },
-  { name: "Gunung Prau", height: "2.565 mdpl", tags: ["Jawa Tengah"], img: "/projects/prau.jpg" },
-  { name: "Gunung Kembang", height: "2.340 mdpl", tags: ["Jawa Tengah"], img: "/projects/kembang.jpg" },
-  { name: "Gunung Bismo", height: "2.365 mdpl", tags: ["Jawa Tengah"], img: "/projects/bismo.png" },
-  { name: "Gunung Sindoro", height: "3.153 mdpl", tags: ["Jawa Tengah"], img: "/projects/sindoro.jpg" },
-  { name: "Gunung Lawu", height: "3.265 mdpl", tags: ["Jawa Tengah"], img: "/projects/lawu.jpg" },
-  { name: "Gunung Sumbing", height: "3.371 mdpl", tags: ["Jawa Tengah"], img: "/projects/sumbing.jpg" },
-  { name: "Gunung Slamet", height: "3.428 mdpl", tags: ["Jawa Tengah"], img: "/projects/slamet.jpg" },
-];
-
 // --- UI PRIMITIVES ------------------------------------
-function Chip({ children }) {
-  return (
-    <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium 
-      border border-zinc-200 dark:border-white/10 
-      bg-black dark:bg-white/5 
-      text-zinc-200 dark:text-zinc-300 shadow-sm`}
-    >
-      {children}
-    </span>
-  );
-}
-
 function Card({ children }) {
   return (
     <motion.div
@@ -96,23 +68,18 @@ function IconBadge({ Icon }) {
 }
 
 // --- MAIN COMPONENT -----------------------------------
-export default function SkillsAndMountainsSection() {
+export default function SkillsSection() {
   const [query, setQuery] = useState("");
-  const [showMountains, setShowMountains] = useState(false);
+
+  const filterByQuery = (list) =>
+    list.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
 
   const filteredSkills = useMemo(() => {
-    const q = query.toLowerCase();
-    const filterByQuery = (list) =>
-      list.filter((item) => item.name.toLowerCase().includes(q));
     return {
-      dev: filterByQuery(devSkills),
+      backend: filterByQuery(backendSkills),
+      frontend: filterByQuery(frontendSkills),
       design: filterByQuery(designTools),
     };
-  }, [query]);
-
-  const filteredMountains = useMemo(() => {
-    const q = query.toLowerCase();
-    return mountains.filter((item) => item.name.toLowerCase().includes(q));
   }, [query]);
 
   return (
@@ -155,18 +122,39 @@ export default function SkillsAndMountainsSection() {
           </div>
         </div>
 
-        {/* Dev Tools */}
-        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-zinc-100">Dev Tools</h3>
+        {/* Backend Skills */}
+        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-zinc-100">Backend Skills</h3>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 mb-10"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6 mb-10"
         >
           <AnimatePresence>
-            {filteredSkills.dev.map((item, idx) => (
-              <Card key={`dev-${item.name}-${idx}`}>
+            {filteredSkills.backend.map((item, idx) => (
+              <Card key={`backend-${item.name}-${idx}`}>
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <IconBadge Icon={item.icon || Hammer} />
+                  <h3 className="text-sm sm:text-lg font-semibold leading-snug">{item.name}</h3>
+                </div>
+              </Card>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Frontend Skills */}
+        <h3 className="text-xl sm:text-2xl font-bold mb-4 text-zinc-100">Frontend Skills</h3>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6 mb-10"
+        >
+          <AnimatePresence>
+            {filteredSkills.frontend.map((item, idx) => (
+              <Card key={`frontend-${item.name}-${idx}`}>
                 <div className="flex items-center gap-3 sm:gap-4">
                   <IconBadge Icon={item.icon || Hammer} />
                   <h3 className="text-sm sm:text-lg font-semibold leading-snug">{item.name}</h3>
@@ -183,7 +171,7 @@ export default function SkillsAndMountainsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.15 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6"
         >
           <AnimatePresence>
             {filteredSkills.design.map((item, idx) => (
@@ -196,58 +184,6 @@ export default function SkillsAndMountainsSection() {
             ))}
           </AnimatePresence>
         </motion.div>
-
-        {/* Toggle Mountains */}
-        <div className="flex justify-center mt-12">
-          <button
-            onClick={() => setShowMountains(!showMountains)}
-            className="group relative px-6 sm:px-8 py-2.5 sm:py-3 rounded-full 
-            bg-gradient-to-r from-[#6C63FF] via-indigo-500 to-[#6C63FF] 
-            text-white font-semibold text-sm sm:text-lg shadow-lg 
-            hover:shadow-indigo-500/40 hover:scale-105 transition-all 
-            animate-pulse"
-          >
-            <span className="flex items-center gap-2">
-              <Mountain className="h-5 w-5 group-hover:scale-125 transition-transform" />
-              {showMountains ? "Sembunyikan Daftar Gunung" : "Lihat Daftar Gunung"}
-            </span>
-            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#6C63FF]/30 to-indigo-400/30 blur-xl opacity-50 group-hover:opacity-75 transition" />
-          </button>
-        </div>
-
-        {/* Mountains Grid */}
-        <AnimatePresence>
-          {showMountains && (
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 mt-8 sm:mt-10"
-            >
-              {filteredMountains.map((item, idx) => (
-                <Card key={`mountain-${idx}`}>
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-24 sm:h-32 object-cover rounded-lg mb-3"
-                  />
-                  <h3 className="text-sm sm:text-base font-semibold">{item.name}</h3>
-                  {item.height && (
-                    <p className="text-xs sm:text-sm text-zinc-400 mt-1">
-                      Ketinggian: {item.height}
-                    </p>
-                  )}
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {item.tags.map((tag, i) => (
-                      <Chip key={i}>{tag}</Chip>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </section>
   );

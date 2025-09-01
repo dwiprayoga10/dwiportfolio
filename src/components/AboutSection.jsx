@@ -42,11 +42,11 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href="projects/cv.pdf"
+                href="projects/cvdwi.pdf"
                 download
                 className="cosmic-button bg-primary/10 text-primary hover:bg-primary/20"
               >
-                Download CV
+                Lihat CV
               </a>
             </div>
           </div>

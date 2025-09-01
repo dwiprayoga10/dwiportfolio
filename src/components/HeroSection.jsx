@@ -54,7 +54,7 @@ export const HeroSection = () => {
   My Projects
 </a>
 <a
-  href="#skills"
+  href="#peaks"
   className="cosmic-button text-sm md:text-base transition transform hover:scale-105 hover:-translate-y-1 hover:shadow-xl"
 >
   The Peaks
