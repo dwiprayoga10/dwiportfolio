@@ -40,7 +40,7 @@ const projects = [
 ];
 
 // =======================
-// ANIMASI DASAR
+// ANIMASI
 // =======================
 const fadeUp = {
   hidden: { opacity: 0, y: 50 },
@@ -48,7 +48,7 @@ const fadeUp = {
 };
 
 // =======================
-// KOMPONEN KARTU PROYEK
+// KARTU PROYEK
 // =======================
 const ProjectCard = ({ project }) => {
   const filteredTags = project.tags.filter((tag) => tag.trim() !== "");
@@ -61,7 +61,7 @@ const ProjectCard = ({ project }) => {
       className="group relative rounded-2xl overflow-hidden border border-border/30 bg-card/40 backdrop-blur-xl shadow-lg hover:shadow-primary/30 transition-all duration-500"
     >
       {/* Gambar */}
-      <div className="relative h-48 sm:h-56 overflow-hidden">
+      <div className="relative h-40 xs:h-44 sm:h-48 md:h-56 overflow-hidden">
         <motion.img
           src={project.image}
           alt={project.title}
@@ -72,7 +72,7 @@ const ProjectCard = ({ project }) => {
       </div>
 
       {/* Konten */}
-      <div className="p-5 sm:p-6">
+      <div className="p-4 sm:p-6">
         <div className="flex flex-wrap gap-2 mb-3">
           {filteredTags.map((tag, i) => (
             <span
@@ -84,12 +84,12 @@ const ProjectCard = ({ project }) => {
           ))}
         </div>
 
-        <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-lg sm:text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
           {project.title}
         </h3>
 
         <motion.p
-          className="text-muted-foreground text-sm mb-5 line-clamp-3"
+          className="text-muted-foreground text-sm mb-4 line-clamp-3"
           initial={{ opacity: 1 }}
         >
           {project.description}
@@ -111,7 +111,7 @@ const ProjectCard = ({ project }) => {
               rel="noopener noreferrer"
               className="p-2 rounded-full text-foreground/70 hover:text-primary transition-colors duration-300 hover:bg-primary/10"
             >
-              <ExternalLink size={20} />
+              <ExternalLink size={18} />
             </a>
             <a
               href={project.githubUrl}
@@ -119,7 +119,7 @@ const ProjectCard = ({ project }) => {
               rel="noopener noreferrer"
               className="p-2 rounded-full text-foreground/70 hover:text-primary transition-colors duration-300 hover:bg-primary/10"
             >
-              <Github size={20} />
+              <Github size={18} />
             </a>
           </div>
         </div>
@@ -135,46 +135,37 @@ export const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="py-16 sm:py-24 px-4 relative bg-transparent transition-colors duration-700"
+      className="py-14 sm:py-20 px-3 sm:px-6 bg-transparent transition-colors duration-700"
     >
       <div className="container mx-auto max-w-6xl">
-         {/* Title & Description DENGAN PERUBAHAN WARNA JUDUL */}
+        {/* Judul */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.1 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-            <p className="text-sm font-semibold uppercase tracking-widest 
-    text-blue-400 dark:text-blue-400 light:text-blue-600 mb-2">
-  Crafted Projects
-</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-400 mb-2">
+            Crafted Projects
+          </p>
 
-<h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter 
-    leading-none">
-  <span className="bg-clip-text text-transparent bg-gradient-to-r 
-      from-blue-400 to-[#8A75E0] dark:from-blue-400 dark:to-[#8A75E0] 
-      light:from-blue-700 light:to-indigo-800">
-      Built
-  </span>{" "}
-  <span className="
-      text-white dark:text-white light:text-black">
-      with Passion
-  </span> 
-</h2>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tighter leading-none">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-[#8A75E0]">
+              Built
+            </span>{" "}
+            <span className="text-foreground">with Passion</span>
+          </h2>
 
-<p className="mt-4 text-base sm:text-lg 
-    text-zinc-400 dark:text-zinc-400 light:text-zinc-600 max-w-3xl mx-auto leading-relaxed">
-  Kumpulan proyek yang saya rancang dengan penuh dedikasi,  
-  menggabungkan kreativitas, fungsi, dan keindahan desain.
-</p>
+          <p className="mt-4 text-sm sm:text-lg text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+            Kumpulan proyek yang saya rancang dengan penuh dedikasi,  
+            menggabungkan kreativitas, fungsi, dan keindahan desain.
+          </p>
         </motion.div>
 
-
-        {/* Grid */}
+        {/* Grid (✅ Sekarang 2 kolom di HP) */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -192,7 +183,7 @@ export const ProjectsSection = () => {
 
         {/* Tombol GitHub */}
         <motion.div
-          className="text-center mt-16 sm:mt-20"
+          className="text-center mt-12 sm:mt-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -202,11 +193,11 @@ export const ProjectsSection = () => {
             href="https://github.com/dwiprayoga10"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground text-base sm:text-lg font-semibold h-10 sm:h-12 px-6 sm:px-8 shadow-lg shadow-primary/40 transition-all duration-300 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/50 transform hover:-translate-y-0.5"
+            className="group inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-semibold h-10 sm:h-12 px-6 sm:px-8 shadow-lg shadow-primary/40 transition-all duration-300 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/50 transform hover:-translate-y-0.5"
           >
             Check My Github
             <ArrowRight
-              size={20}
+              size={18}
               className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
             />
           </a>

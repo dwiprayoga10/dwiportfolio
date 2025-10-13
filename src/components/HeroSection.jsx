@@ -142,8 +142,8 @@ export const HeroSection = () => {
           ease: "easeInOut",
         }}
       >
-        <span className="text-sm text-muted-foreground mb-2">Scroll Down</span>
-        <ArrowDown className="h-5 w-5 text-primary" />
+      
+
       </motion.div>
     </motion.section>
   );

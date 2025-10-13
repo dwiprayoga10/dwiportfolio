@@ -188,11 +188,6 @@ export const AboutSection = () => {
               title="Optimisasi Performa"
               description="Menekankan kecepatan dan efisiensi kode."
             />
-            <AestheticCard
-             icon={Server}
-            title="Keamanan & Skalabilitas"
-             description="Menjamin kestabilan sistem melalui arsitektur yang aman dan tangguh."
-            />
             
           </div>
         </div>
